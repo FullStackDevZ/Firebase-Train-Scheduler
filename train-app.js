@@ -57,7 +57,7 @@ $(document).ready(function () {
         var frequency = childSnapshot.val().frequency;
         var nextArrival = childSnapshot.val().arrival;
         var minsAway = childSnapshot.val().minutes;
-    
+
         // Log the value of the various properties
         console.log(train);
         console.log(destination);
