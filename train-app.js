@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
 
     var config = {
@@ -15,13 +13,14 @@ $(document).ready(function () {
 
     var database = firebase.database();
 
+    // Sets up the variables
     var train = "";
     var destination = "";
     var frequency = "";
     var nextArrival = "";
     var minsAway = "";
 
-    // Capture Button Submit
+    // Submit button
     $('#submit-btn').on('click', function (event) {
         event.preventDefault();
 
@@ -31,13 +30,13 @@ $(document).ready(function () {
         nextArrival = $("#next-arrival").val().trim();
         minsAway = $("#mins-away").val().trim();
 
+        // Sends the values to Firebase
         database.ref("/trainInfo").push({
             train: train,
             destination: destination,
             frequency: frequency,
             arrival: nextArrival,
             minutes: minsAway,
-
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
 
@@ -66,19 +65,6 @@ $(document).ready(function () {
         console.log(nextArrival);
         console.log(minsAway);
 
-
-        // // snapshot.forEach(element => {
-
-            // newRow.append('<td>' + snapshot.val().train + '</td>')
-            // newRow.append('<td>' + snapshot.val().destination + '</td>')
-            // newRow.append('<td>' + snapshot.val().frequency + '</td>')
-            // newRow.append('<td>' + snapshot.val().nextArrival + '</td></tr>')
-            // newRow.append('<td>' + snapshot.val().minsAway + '</td></tr>')
-            // $("#fromDatabase").append(newRow);
-            // console.log("for loop running");
-
-        // // });
-
         // Adds new  rows and table data below the original table headings at the top
         var newRow = $("<tr>").append(
             $("<td>").text(train),
@@ -87,9 +73,7 @@ $(document).ready(function () {
             $("<td>").text(nextArrival),
             $("<td>").text(minsAway),
         );
-
+        // Sends the data above to the table id fromDatabase
         $("#fromDatabase").append(newRow);
     });
-
-
 })

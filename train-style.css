@@ -3,46 +3,44 @@
   }
 
 
-  table:hover {
-    background-color: lime;
+#fromDatabase {
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    border-radius: 3px;
+    background-color: red;
 }
   
-#fromDatabase tr:nth-child(even){background-color: red;}
+#fromDatabase tr:nth-child(even){background-color: yellow;}
+#fromDatabase tr:nth-child(odd){background-color: lime;}
 
-#fromDatabase:active {
-    background-color:red; /* When the button is clicked */
-    box-shadow: 0 7px green;
-    transform: translateY(4px);
-  }
-
-  table {
+  table, td, th, thead {
     border-collapse: separate;
-    border-spacing: 60px 0;
+    border-color: black;
+    border-width: 3px;
+    border-style: solid;
     font-size: 20px;
     text-align: center;
-  }
-  
-  td {
     padding: 10px 0;
   }
-
-  th {
-      font-size: 26px;
-  }
-
-  thead {
-      font-size: 43px;
-  }
-
+  
 div {
     display: inline-block;
-    background-color:transparent;
-    border-radius: 1px;
     border-style: ridge;
     font-size: 22px;
     font-weight: bolder;
-    color: white;
+    color: black;
     text-align: center;
+}
+
+
+.form-group {
+   background-color: lime; 
+   text-align: center;
+}
+
+.form-group:hover {
+    background-color: red;
 }
 
 button {
@@ -70,33 +68,34 @@ button:active {
     box-shadow: 0 7px green;
     transform: translateY(4px);
   }
+
 header {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: oblique;
     font-size: 32px;
     padding: 12px;
     font-weight: bolder;
+    
 }
 
 body {
     text-align: center;
     font-size: 18 px;
-    color: white;
-    background: url(./images/train.jpg);
+    color: black;
+    background: url(./images/ny.jpeg);
     background-size: 100%;
     min-width: 100%;
     min-height: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    
 }
 
 
 footer {
     text-align: center;
-    color: black;
-    border-top: 1px solid black;
+    color:red;
+    border-top: 1px solid white;
     background: transparent;
     font-weight: bolder;
 }
