@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+  }
+
+
+  table:hover {
+    background-color: lime;
+}
+  
+#fromDatabase tr:nth-child(even){background-color: red;}
+
+#fromDatabase:active {
+    background-color:red; /* When the button is clicked */
+    box-shadow: 0 7px green;
+    transform: translateY(4px);
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 60px 0;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  td {
+    padding: 10px 0;
+  }
+
+  th {
+      font-size: 26px;
+  }
+
+  thead {
+      font-size: 43px;
+  }
+
+div {
+    display: inline-block;
+    background-color:transparent;
+    border-radius: 1px;
+    border-style: ridge;
+    font-size: 22px;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+}
+
+button {
+    cursor: pointer;
+    font-size: 35px;
+    color: purple ;
+    background-color: orangered;
+    font-weight: bolder;
+    border-color: black;
+    border-width: 7px;
+    padding: 7px;
+    border-radius: 11px;
+    font-style: inherit;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: black;/* border-color: yellow; */
+}
+
+button:hover {
+    background-color: yellow;
+    
+}
+
+button:active {
+    background-color:red; /* When the button is clicked */
+    box-shadow: 0 7px green;
+    transform: translateY(4px);
+  }
+header {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: oblique;
+    font-size: 32px;
+    padding: 12px;
+    font-weight: bolder;
+}
+
+body {
+    text-align: center;
+    font-size: 18 px;
+    color: white;
+    background: url(./images/train.jpg);
+    background-size: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+}
+
+
+footer {
+    text-align: center;
+    color: black;
+    border-top: 1px solid black;
+    background: transparent;
+    font-weight: bolder;
+}
+
+.wrapper {
+    width: 1024px;
+    margin: 40px auto;
+}
+  
+@media only screen and (max-width: 980px) {
+    body {
+        max-width: 100%;
+        height: auto;
+    }
+    .wrapper {
+        width: 800px;
+      }
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        max-width: 100%;
+        height: auto;
+    }
+    .wrapper {
+        width: 800px;
+      }
+}
+
+@media only screen and (max-width: 640px) {
+    body {
+        max-width: 100%;
+        height: auto;
+    }
+    header {
+        position: static;
+    }
+    .wrapper {
+        width: 600px;
+      }
+}
+
+
