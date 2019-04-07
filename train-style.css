@@ -18,14 +18,16 @@
     border-color: black;
     border-width: 3px;
     border-style: solid;
-    font-size: 20px;
+    font-size: 14px;
     text-align: center;
     padding: 10px 0;
   }
   
 div {
     display: inline-block;
-    border-style: ridge;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
     font-size: 22px;
     font-weight: bolder;
     color: black;
@@ -36,6 +38,11 @@ div {
 .form-group {
    background-color: lime; 
    text-align: center;
+   font-size: 16px;
+   border-color: black;
+    border-width: 7px;
+    border-color: black;
+    border-style: solid;
 }
 
 .form-group:hover {
@@ -74,6 +81,7 @@ header {
     font-size: 32px;
     padding: 12px;
     font-weight: bolder;
+    background-color: red;
     
 }
 
@@ -81,6 +89,7 @@ body {
     text-align: center;
     font-size: 18 px;
     color: black;
+    padding: 2px;
     background: url(./images/ny.jpeg);
     background-size: 100%;
     min-width: 100%;
