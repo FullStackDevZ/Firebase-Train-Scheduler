@@ -7,7 +7,7 @@
     border-color: black;
     border-width: 3px;
     border-radius: 3px;
-    background-color: red;
+    background-color: mediumslateblue;
 }
   
 #fromDatabase tr:nth-child(even){background-color: yellow;}
@@ -32,8 +32,12 @@ div {
     font-weight: bolder;
     color: black;
     text-align: center;
+    height: auto;
+    text-shadow: 2px 2px 4px #000;
+    box-shadow: 0 0 15px 8px #fff,  /* inner white */
+        0 0 25px 15px #f0f, /* middle magenta */
+        0 0 10px 5px #0ff; /* outer cyan */
 }
-
 
 .form-group {
    background-color: lime; 
@@ -45,15 +49,15 @@ div {
     border-style: solid;
 }
 
-.form-group:hover {
+.form-group:hover, tr {
     background-color: red;
 }
 
 button {
     cursor: pointer;
     font-size: 35px;
-    color: purple ;
-    background-color: orangered;
+    color:#6F2DA8;
+    background-color:yellow;
     font-weight: bolder;
     border-color: black;
     border-width: 7px;
@@ -65,7 +69,7 @@ button {
 }
 
 button:hover {
-    background-color: yellow;
+    background-color: red;
     
 }
 
@@ -85,7 +89,7 @@ header {
     
 }
 
-body {
+html, body {
     text-align: center;
     font-size: 18 px;
     color: black;
@@ -94,9 +98,6 @@ body {
     background-size: 100%;
     min-width: 100%;
     min-height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
 }
 
 footer {

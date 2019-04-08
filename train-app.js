@@ -24,6 +24,7 @@ $(document).ready(function () {
     $('#submit-btn').on('click', function (event) {
         event.preventDefault();
 
+        // Takes the user inputs from the specified IDs
         train = $("#train-name").val().trim();
         destination = $("#destination").val().trim();
         frequency = $("#frequency").val().trim();
@@ -58,6 +59,21 @@ $(document).ready(function () {
         var nextArrival = childSnapshot.val().arrival;
         var minsAway = childSnapshot.val().minutes;
 
+        // var frequency = snapshot.val().frequency;
+
+        // // compute the difference in time from 'now' and the first train using UNIX timestamp, store in var and convert to minutes
+        // trainDiff = moment().diff(moment.unix(snapshot.val().time), "minutes");
+
+        // // get the remainder of time by using 'moderator' with the frequency & time difference, store in var
+        // trainRemainder = trainDiff % frequency;
+
+        // // subtract the remainder from the frequency, store in var
+        // minutesTillArrival = frequency - trainRemainder;
+
+        // // add minutesTillArrival to now, to find next train & convert to standard time format
+        // nextTrainTime = moment().add(minutesTillArrival, "m").format("hh:mm A");
+
+
         // Log the value of the various properties
         console.log(train);
         console.log(destination);
@@ -72,8 +88,15 @@ $(document).ready(function () {
             $("<td>").text(frequency),
             $("<td>").text(nextArrival),
             $("<td>").text(minsAway),
+            // $("<td>").text(nextTrainTime),
         );
         // Sends the data above to the table id fromDatabase
         $("#fromDatabase").append(newRow);
     });
+
+    // Deletes the last row of data when clicked
+    $('#delete-btn').on('click', function () {
+            document.getElementById("fromDatabase").deleteRow(-1);
+    });
+
 })
