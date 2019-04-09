@@ -31,7 +31,7 @@ $(document).ready(function () {
         destination = $("#destination").val().trim();
         frequency = $("#frequency").val().trim();
         nextArrival = $("#next-arrival").val().trim();
-    
+
         // Sends the values to Firebase
         database.ref("/trainInfo").push({
             train: train,
@@ -52,23 +52,17 @@ $(document).ready(function () {
 
     // Firebase watcher + initial loader
     database.ref("/trainInfo").on("child_added", function (childSnapshot) {
+
+        let value = childSnapshot.val();
+
+        let train = value.train;
+        let destination = value.destination;
+        let frequency = value.frequency;
+        let nextArrival = value.arrival;
+
         
-        var value = childSnapshot.val();
-
-        var train = value.train;
-        var destination = value.destination;
-        var frequency = value.frequency;
-        var nextArrival = value.arrival;
-
-        var remainder = moment().diff(moment.unix(nextArrival), "minutes") % frequency;
-        console.log(remainder);
-        
-        var minsAway = nextArrival - remainder;
-        console.log(minsAway);
-
-        // // Creates a var to store the current time
-        // var tArrival = moment().add(minsAway, "m").format("hh:mm A");
-        // console.log(tArrival);
+        let remainder = moment().diff(moment.unix(nextArrival)) % frequency;
+        let minsAway = frequency - remainder;
 
         // Adds new  rows and table data below the original table headings at the top
         var newRow = $("<tr>").append(
@@ -76,7 +70,7 @@ $(document).ready(function () {
             $("<td>").text(destination),
             $("<td>").text(frequency),
             $("<td>").text(nextArrival),
-            $("<td>").text(remainder),
+            $("<td>").text(minsAway),
         );
 
         // Sends the data above to the table id fromDatabase
