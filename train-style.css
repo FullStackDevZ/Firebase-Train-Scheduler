@@ -8,12 +8,13 @@
     border-width: 3px;
     border-radius: 3px;
     background-color: mediumslateblue;
+    text-align: center;
 }
   
 #fromDatabase tr:nth-child(even){background-color: yellow;}
 #fromDatabase tr:nth-child(odd){background-color: lime;}
 
-  table, td, th, thead {
+  table, td, th,  tr {
     border-collapse: separate;
     border-color: black;
     border-width: 3px;
@@ -22,7 +23,7 @@
     text-align: center;
     padding: 10px 0;
   }
-  
+
 div {
     display: inline-block;
     border-style: solid;
@@ -64,6 +65,7 @@ button {
     padding: 7px;
     border-radius: 11px;
     font-style: inherit;
+    text-align: center;
     -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: black;/* border-color: yellow; */
 }

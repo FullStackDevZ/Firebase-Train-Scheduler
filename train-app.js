@@ -13,12 +13,14 @@ $(document).ready(function () {
 
     var database = firebase.database();
 
+    // Shows the current time
+    $("#time").append(moment().format("hh:mm A"));
+
     // Sets up the variables
     var train = "";
     var destination = "";
     var frequency = "";
     var nextArrival = "";
-    var minsAway = "";
 
     // Submit button
     $('#submit-btn').on('click', function (event) {
@@ -29,15 +31,13 @@ $(document).ready(function () {
         destination = $("#destination").val().trim();
         frequency = $("#frequency").val().trim();
         nextArrival = $("#next-arrival").val().trim();
-        minsAway = $("#mins-away").val().trim();
-
+    
         // Sends the values to Firebase
         database.ref("/trainInfo").push({
             train: train,
             destination: destination,
             frequency: frequency,
             arrival: nextArrival,
-            minutes: minsAway,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
 
@@ -46,40 +46,29 @@ $(document).ready(function () {
         $("#destination").val("");
         $("#frequency").val("");
         $("#next-arrival").val("");
-        $("#mins-away").val("");
+
+        return false;
     })
 
     // Firebase watcher + initial loader
     database.ref("/trainInfo").on("child_added", function (childSnapshot) {
-        console.log(childSnapshot.val());
+        
+        var value = childSnapshot.val();
 
-        var train = childSnapshot.val().train;
-        var destination = childSnapshot.val().destination;
-        var frequency = childSnapshot.val().frequency;
-        var nextArrival = childSnapshot.val().arrival;
-        var minsAway = childSnapshot.val().minutes;
+        var train = value.train;
+        var destination = value.destination;
+        var frequency = value.frequency;
+        var nextArrival = value.arrival;
 
-        // var frequency = snapshot.val().frequency;
-
-        // // compute the difference in time from 'now' and the first train using UNIX timestamp, store in var and convert to minutes
-        // trainDiff = moment().diff(moment.unix(snapshot.val().time), "minutes");
-
-        // // get the remainder of time by using 'moderator' with the frequency & time difference, store in var
-        // trainRemainder = trainDiff % frequency;
-
-        // // subtract the remainder from the frequency, store in var
-        // minutesTillArrival = frequency - trainRemainder;
-
-        // // add minutesTillArrival to now, to find next train & convert to standard time format
-        // nextTrainTime = moment().add(minutesTillArrival, "m").format("hh:mm A");
-
-
-        // Log the value of the various properties
-        console.log(train);
-        console.log(destination);
-        console.log(frequency);
-        console.log(nextArrival);
+        var remainder = moment().diff(moment.unix(nextArrival), "minutes") % frequency;
+        console.log(remainder);
+        
+        var minsAway = nextArrival - remainder;
         console.log(minsAway);
+
+        // // Creates a var to store the current time
+        // var tArrival = moment().add(minsAway, "m").format("hh:mm A");
+        // console.log(tArrival);
 
         // Adds new  rows and table data below the original table headings at the top
         var newRow = $("<tr>").append(
@@ -87,16 +76,16 @@ $(document).ready(function () {
             $("<td>").text(destination),
             $("<td>").text(frequency),
             $("<td>").text(nextArrival),
-            $("<td>").text(minsAway),
-            // $("<td>").text(nextTrainTime),
+            $("<td>").text(remainder),
         );
+
         // Sends the data above to the table id fromDatabase
         $("#fromDatabase").append(newRow);
     });
 
     // Deletes the last row of data when clicked
     $('#delete-btn').on('click', function () {
-            document.getElementById("fromDatabase").deleteRow(-1);
+        document.getElementById("fromDatabase").deleteRow(-1);
     });
 
 })
