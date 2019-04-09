@@ -70,6 +70,8 @@ button {
     -webkit-text-stroke-color: black;/* border-color: yellow; */
 }
 
+
+
 button:hover {
     background-color: red;
     
@@ -80,6 +82,15 @@ button:active {
     box-shadow: 0 7px green;
     transform: translateY(4px);
   }
+
+#delete-btn  {
+ color: yellow;
+ background-color: purple;
+}
+
+#delete-btn:hover {
+    background-color: red;
+}
 
 header {
     font-family: Georgia, 'Times New Roman', Times, serif;
