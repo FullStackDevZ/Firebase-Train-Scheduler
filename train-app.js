@@ -55,7 +55,7 @@ $(document).ready(function () {
 
         let value = childSnapshot.val();
 
-        let train = value.train;
+        let name = value.train;
         let destination = value.destination;
         let frequency = value.frequency;
         let nextArrival = value.arrival;
@@ -66,7 +66,7 @@ $(document).ready(function () {
 
         // Adds new  rows and table data below the original table headings at the top
         var newRow = $("<tr>").append(
-            $("<td>").text(train),
+            $("<td>").text(name),
             $("<td>").text(destination),
             $("<td>").text(frequency),
             $("<td>").text(nextArrival),
