@@ -14,7 +14,7 @@ $(document).ready(function () {
     var database = firebase.database();
 
     // Shows the current time
-    $("#time").append(moment().format("hh:mm A"));
+    $("#time").append(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
 
     // Sets up the variables
     var train = "";
@@ -61,9 +61,11 @@ $(document).ready(function () {
         let nextArrival = value.arrival;
 
         
-        let remainder = moment().diff(moment.unix(nextArrival)) % frequency;
+        let remainder = moment(nextArrival, "hh:mm").diff(moment(),"minutes") % frequency;
         let minsAway = frequency - remainder;
 
+        console.log(remainder);
+       
         // Adds new  rows and table data below the original table headings at the top
         var newRow = $("<tr>").append(
             $("<td>").text(name),
