@@ -59,7 +59,6 @@ $(document).ready(function () {
         let destination = value.destination;
         let frequency = value.frequency;
         let nextArrival = value.arrival;
-
         
         let remainder = moment(nextArrival, "hh:mm").diff(moment(),"minutes") % frequency;
         let minsAway = frequency - remainder;
