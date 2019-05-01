@@ -59,19 +59,50 @@ $(document).ready(function () {
         let destination = value.destination;
         let frequency = value.frequency;
         let nextArrival = value.arrival;
-        
-        let remainder = moment(nextArrival, "hh:mm").diff(moment(),"minutes") % frequency;
-        let minsAway = frequency - remainder;
 
-        console.log(remainder);
-       
+        var timeArr = nextArrival.split(":");
+        var trainTime = moment()
+            .hours(timeArr[0])
+            .minutes(timeArr[1]);
+        var maxMoment = moment.max(moment(), trainTime);
+        var tMinutes;
+        var tArrival;
+
+        // If the first train is later than the current time, sent arrival to the first train time
+        if (maxMoment === trainTime) {
+            tArrival = trainTime.format("hh:mm A");
+            tMinutes = trainTime.diff(moment(), "minutes");
+        } else {
+            // Calculate the minutes until arrival using hardcore math
+            // To calculate the minutes till arrival, take the current time in unix subtract the FirstTrain time
+            // and find the modulus between the difference and the frequency.
+            var differenceTimes = moment().diff(trainTime, "minutes");
+            var tRemainder = differenceTimes % frequency;
+            tMinutes = frequency - tRemainder;
+            // To calculate the arrival time, add the tMinutes to the current time
+            tArrival = moment()
+                .add(tMinutes, "m")
+                .format("hh:mm A");
+        }
+        console.log("tMinutes:", tMinutes);
+        console.log("tArrival:", tArrival);
+
+
+
+        // let remainder = moment(nextArrival, "hh:mm").diff(moment(), "minutes") % frequency;
+        // let minsAway = frequency - remainder;
+
+
+
+        // console.log(remainder);
+
         // Adds new  rows and table data below the original table headings at the top
         var newRow = $("<tr>").append(
             $("<td>").text(name),
             $("<td>").text(destination),
             $("<td>").text(frequency),
-            $("<td>").text(nextArrival),
-            $("<td>").text(minsAway),
+            $("<td>").text(tArrival),
+            $("<td>").text(tMinutes),
         );
 
         // Sends the data above to the table id fromDatabase
