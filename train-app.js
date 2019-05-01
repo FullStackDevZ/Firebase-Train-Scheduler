@@ -68,12 +68,12 @@ $(document).ready(function () {
         var tMinutes;
         var tArrival;
 
-        // If the first train is later than the current time, sent arrival to the first train time
+        // If the first train is later than the current time, send arrival to the first train time
         if (maxMoment === trainTime) {
             tArrival = trainTime.format("hh:mm A");
             tMinutes = trainTime.diff(moment(), "minutes");
         } else {
-            // Calculate the minutes until arrival using hardcore math
+            // Calculates the minutes until arrival
             // To calculate the minutes till arrival, take the current time in unix subtract the FirstTrain time
             // and find the modulus between the difference and the frequency.
             var differenceTimes = moment().diff(trainTime, "minutes");
@@ -86,15 +86,6 @@ $(document).ready(function () {
         }
         console.log("tMinutes:", tMinutes);
         console.log("tArrival:", tArrival);
-
-
-
-        // let remainder = moment(nextArrival, "hh:mm").diff(moment(), "minutes") % frequency;
-        // let minsAway = frequency - remainder;
-
-
-
-        // console.log(remainder);
 
         // Adds new  rows and table data below the original table headings at the top
         var newRow = $("<tr>").append(
